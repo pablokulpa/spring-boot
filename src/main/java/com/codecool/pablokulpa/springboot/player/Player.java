@@ -11,10 +11,13 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private Integer age;
+
+    public Player() {
+    }
 
     public Player(String firstName, String lastName, Integer age) {
         this.firstName = firstName;
@@ -22,4 +25,7 @@ public class Player {
         this.age = age;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
