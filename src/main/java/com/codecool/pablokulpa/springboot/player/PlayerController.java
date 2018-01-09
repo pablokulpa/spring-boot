@@ -27,8 +27,7 @@ public class PlayerController {
 
     @PostMapping(path = "")
     public Player create(@RequestBody Player player){
-        playerService.create(player);
-        return player;
+        return playerService.create(player);
     }
 
     @DeleteMapping(path = "/{id}")
