@@ -1,10 +1,14 @@
 package com.codecool.pablokulpa.springboot.match;
 
+import com.codecool.pablokulpa.springboot.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
-@RequestMapping(path = "/MATCH")
+@RequestMapping(path = "/match")
+
 public class MatchController {
 
     private MatchService matchService;

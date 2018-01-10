@@ -1,27 +1,27 @@
 package com.codecool.pablokulpa.springboot.match;
 
 import com.codecool.pablokulpa.springboot.player.Player;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"date"}))
 public class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Player.class)
     private Player player1;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Player.class)
     private Player player2;
     private Integer winner;
+    private String city;
+    private Date date;
 
-    public Match(Player player1, Player player2, Integer winner) {
-        this.player1 = player1;
-        this.player2 = player2;
-        this.winner = winner;
-    }
 
     public Integer getId() {
         return id;
@@ -53,6 +53,22 @@ public class Match {
 
     public void setWinner(Integer winner) {
         this.winner = winner;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
 
