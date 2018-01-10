@@ -7,5 +7,6 @@ public interface PlayerService {
     Player create(Player player);
     Player show(Integer id);
     void delete(Integer id);
+    void softDelete(Integer id);
 
 }

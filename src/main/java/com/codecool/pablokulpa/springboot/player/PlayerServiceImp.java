@@ -1,5 +1,6 @@
 package com.codecool.pablokulpa.springboot.player;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -9,6 +10,7 @@ public class PlayerServiceImp implements PlayerService {
 
     private PlayerRepository playerRepository;
 
+    @Autowired
     public PlayerServiceImp(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
@@ -33,5 +35,10 @@ public class PlayerServiceImp implements PlayerService {
     @Override
     public void delete(Integer id) {
         playerRepository.delete(id);
+    }
+
+    @Override
+    public void softDelete(Integer id) {
+        playerRepository.archive(id);
     }
 }

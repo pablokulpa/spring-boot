@@ -32,6 +32,6 @@ public class PlayerController {
 
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Integer id){
-        playerService.delete(id);
+        playerService.softDelete(id);
     }
 }

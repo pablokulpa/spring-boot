@@ -13,6 +13,7 @@ public class Player {
     private String firstName;
     private String lastName;
     private Integer age;
+    private boolean isArchive;
 
     public Player() {
     }
@@ -47,5 +48,13 @@ public class Player {
 
     public Integer getAge() {
         return age;
+    }
+
+    public boolean isArchive() {
+        return isArchive;
+    }
+
+    public void setArchive(boolean archive) {
+        isArchive = archive;
     }
 }
