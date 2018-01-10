@@ -28,11 +28,15 @@ public class MatchServiceImp implements MatchService{
 
     @Override
     public Match create(Match match) {
-        Player player1 = playerRepository.findOne(match.getPlayer1().getId());
-        Player player2 = playerRepository.findOne(match.getPlayer2().getId());
-        match.setPlayer1(player1);
+        if(match.getPlayer1().getId()!=null){
+            Player player1 = playerRepository.findOne(match.getPlayer1().getId());
+            match.setPlayer1(player1);
+        }
+        if(match.getPlayer2().getId()!=null){
+            Player player2 = playerRepository.findOne(match.getPlayer2().getId());
+            match.setPlayer2(player2);
+        }
 
-        match.setPlayer2(player2);
         return matchRepository.save(match);
     }
 
