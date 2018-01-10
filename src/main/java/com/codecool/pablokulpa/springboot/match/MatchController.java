@@ -36,7 +36,7 @@ public class MatchController {
 
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Integer id){
-        matchService.delete(id);
+        matchService.softDelete(id);
     }
 
 }

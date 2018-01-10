@@ -8,5 +8,6 @@ public interface PlayerService {
     Player show(Integer id);
     void delete(Integer id);
     void softDelete(Integer id);
+    List<Player> findActive();
 
 }

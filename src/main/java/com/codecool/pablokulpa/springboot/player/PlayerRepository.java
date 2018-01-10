@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface PlayerRepository extends CrudRepository<Player, Integer>{
@@ -15,4 +16,9 @@ public interface PlayerRepository extends CrudRepository<Player, Integer>{
     @Transactional
     @Query("UPDATE Player SET isArchive = true WHERE id =:id")
     void archive(@Param("id") Integer id);
+
+    @Query("SELECT p from Player p where p.isArchive like false")
+    Iterable<Player> findAllbyArchiveFalse();
+
+
 }

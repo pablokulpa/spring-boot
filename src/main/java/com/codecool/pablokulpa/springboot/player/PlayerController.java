@@ -17,7 +17,7 @@ public class PlayerController {
 
     @GetMapping(path = "")
     public Iterable<Player> index(){
-        return playerService.findAll();
+        return playerService.findActive();
     }
 
     @GetMapping(path = "/{id}")

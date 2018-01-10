@@ -29,7 +29,6 @@ public class PlayerServiceImp implements PlayerService {
     @Override
     public Player show(Integer id) {
         return playerRepository.findOne(id);
-
     }
 
     @Override
@@ -40,5 +39,10 @@ public class PlayerServiceImp implements PlayerService {
     @Override
     public void softDelete(Integer id) {
         playerRepository.archive(id);
+    }
+
+    @Override
+    public List<Player> findActive() {
+        return (List<Player>) playerRepository.findAllbyArchiveFalse();
     }
 }

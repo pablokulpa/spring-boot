@@ -10,5 +10,7 @@ public interface MatchService {
     List<Match> findAll();
     Match create(Match match);
     void delete(Integer id);
+    void softDelete(Integer id);
     Match showById(Integer id);
+    List<Match> findAllActive();
 }

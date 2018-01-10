@@ -2,11 +2,9 @@ package com.codecool.pablokulpa.springboot.match;
 
 import com.codecool.pablokulpa.springboot.player.Player;
 import com.codecool.pablokulpa.springboot.player.PlayerRepository;
-import com.codecool.pablokulpa.springboot.player.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.management.PlatformLoggingMXBean;
 import java.util.List;
 
 @Service
@@ -47,7 +45,17 @@ public class MatchServiceImp implements MatchService{
     }
 
     @Override
+    public void softDelete(Integer id) {
+        matchRepository.archive(id);
+    }
+
+    @Override
     public Match showById(Integer id) {
         return matchRepository.findOne(id);
+    }
+
+    @Override
+    public List<Match> findAllActive() {
+        return (List<Match>) matchRepository.findAllByActive();
     }
 }

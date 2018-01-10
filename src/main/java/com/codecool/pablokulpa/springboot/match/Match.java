@@ -21,6 +21,7 @@ public class Match {
     private Integer winner;
     private String city;
     private Date date;
+    private boolean isArchive;
 
 
     public Integer getId() {
@@ -69,6 +70,14 @@ public class Match {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public boolean isArchive() {
+        return isArchive;
+    }
+
+    public void setArchive(boolean archived) {
+        isArchive = archived;
     }
 }
 
