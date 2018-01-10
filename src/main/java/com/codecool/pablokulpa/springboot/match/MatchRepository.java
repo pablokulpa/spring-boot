@@ -12,7 +12,6 @@ import javax.transaction.Transactional;
 @Repository
 public interface MatchRepository extends CrudRepository<Match, Integer>{
 
-
     @Modifying
     @Transactional
     @Query("UPDATE Match SET isArchive = true WHERE id =:id")
@@ -20,6 +19,4 @@ public interface MatchRepository extends CrudRepository<Match, Integer>{
 
     @Query("SELECT p from Match p where p.isArchive like false")
     Iterable<Match> findAllByActive();
-
-
 }

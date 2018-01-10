@@ -4,10 +4,12 @@ import com.codecool.pablokulpa.springboot.player.Player;
 import com.codecool.pablokulpa.springboot.player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class MatchServiceImp implements MatchService{
 
     MatchRepository matchRepository;
@@ -15,7 +17,6 @@ public class MatchServiceImp implements MatchService{
 
     @Autowired
     public MatchServiceImp(MatchRepository matchRepository, PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
         this.matchRepository = matchRepository;
     }
 
