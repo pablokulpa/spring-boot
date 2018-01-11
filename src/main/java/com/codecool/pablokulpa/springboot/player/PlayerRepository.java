@@ -19,7 +19,4 @@ public interface PlayerRepository extends CrudRepository<Player, Integer>{
 
     @Query("SELECT p from Player p where p.isArchive like false")
     Iterable<Player> findAllbyArchiveFalse();
-
-
-
 }
