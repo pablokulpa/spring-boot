@@ -24,4 +24,8 @@ public class Log {
     public void getLog(String message){
         logger.info(MARKER,message);
     }
+
+    public void errorLog(String message){
+        logger.error(MARKER,message);
+    }
 }

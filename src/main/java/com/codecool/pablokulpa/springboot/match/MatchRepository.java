@@ -14,9 +14,13 @@ public interface MatchRepository extends CrudRepository<Match, Integer>{
 
     @Modifying
     @Transactional
-    @Query("UPDATE Match SET isArchive = true WHERE id =:id")
+    @Query("UPDATE Match SET archive = true WHERE id =:id")
     void archive(@Param("id") Integer id);
 
-    @Query("SELECT p from Match p where p.isArchive like false")
+    @Query("SELECT p from Match p where p.archive like false")
     Iterable<Match> findAllByActive();
+
+
+    Iterable<Match> findAllByArchiveIsFalse();
+
 }

@@ -1,8 +1,7 @@
 package com.codecool.pablokulpa.springboot.match;
 
 import com.codecool.pablokulpa.springboot.player.Player;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,7 +20,7 @@ public class Match {
     private Integer winner;
     private String city;
     private Date date;
-    private boolean isArchive;
+    private boolean archive;
 
 
     public Integer getId() {
@@ -72,12 +71,13 @@ public class Match {
         this.date = date;
     }
 
+    @JsonIgnore
     public boolean isArchive() {
-        return isArchive;
+        return archive;
     }
 
-    public void setArchive(boolean archived) {
-        isArchive = archived;
+    public void setArchive(boolean archive) {
+        this.archive = archive;
     }
 }
 

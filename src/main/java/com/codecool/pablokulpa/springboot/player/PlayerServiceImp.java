@@ -2,9 +2,8 @@ package com.codecool.pablokulpa.springboot.player;
 
 import com.codecool.pablokulpa.springboot.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,8 +35,13 @@ public class PlayerServiceImp implements PlayerService {
 
     @Override
     public Player show(Integer id) {
-        log.getLog(String.format("Get player index:%s",id));
-        return playerRepository.findOne(id);
+        if(playerRepository.findOne(id)==null){
+            throw new EmptyResultDataAccessException(1);
+        }else{
+            log.getLog(String.format("Get player index:%s",id));
+            return playerRepository.findOne(id);
+        }
+
     }
 
     @Override
@@ -47,8 +51,12 @@ public class PlayerServiceImp implements PlayerService {
 
     @Override
     public void softDelete(Integer id) {
-        playerRepository.archive(id);
-        log.getLog(String.format("Delete player id:%s",id));
+        if(playerRepository.findOne(id)==null){
+            throw new EmptyResultDataAccessException(1);
+        }else {
+            playerRepository.archive(id);
+            log.getLog(String.format("Delete player id:%s", id));
+        }
     }
 
     @Override
