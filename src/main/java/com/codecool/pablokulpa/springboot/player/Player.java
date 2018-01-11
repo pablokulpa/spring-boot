@@ -1,6 +1,8 @@
 package com.codecool.pablokulpa.springboot.player;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Player {
     private String firstName;
     private String lastName;
     private Integer age;
+    @JsonIgnore
     private boolean isArchive;
 
     public Player() {
@@ -50,6 +53,7 @@ public class Player {
         return age;
     }
 
+    @JsonIgnore
     public boolean isArchive() {
         return isArchive;
     }

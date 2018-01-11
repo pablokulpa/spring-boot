@@ -1,5 +1,11 @@
 package com.codecool.pablokulpa.springboot.player;
 
+import com.codecool.pablokulpa.springboot.SpringbootApplication;
+import com.codecool.pablokulpa.springboot.log.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/player")
 public class PlayerController {
 
+
     private PlayerService playerService;
 
-    @Autowired
     public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
     }

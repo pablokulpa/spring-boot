@@ -1,5 +1,6 @@
 package com.codecool.pablokulpa.springboot.match;
 
+import com.codecool.pablokulpa.springboot.log.Log;
 import com.codecool.pablokulpa.springboot.player.Player;
 import com.codecool.pablokulpa.springboot.player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,14 @@ public class MatchServiceImp implements MatchService{
 
     MatchRepository matchRepository;
     PlayerRepository playerRepository;
+    Log log;
 
     @Autowired
-    public MatchServiceImp(MatchRepository matchRepository, PlayerRepository playerRepository) {
+    public MatchServiceImp(MatchRepository matchRepository, PlayerRepository playerRepository, Log log) {
         this.matchRepository = matchRepository;
+        this.playerRepository = playerRepository;
+        this.log = log;
+        log.setLogger(MatchController.class);
     }
 
     @Override
@@ -36,6 +41,7 @@ public class MatchServiceImp implements MatchService{
             match.setPlayer2(player2);
         }
 
+        log.getLog("Create new Match");
         return matchRepository.save(match);
     }
 
@@ -47,16 +53,19 @@ public class MatchServiceImp implements MatchService{
 
     @Override
     public void softDelete(Integer id) {
+        log.getLog(String.format("Get player index:%s",id));
         matchRepository.archive(id);
     }
 
     @Override
     public Match showById(Integer id) {
+        log.getLog(String.format("Get player index:%s",id));
         return matchRepository.findOne(id);
     }
 
     @Override
     public List<Match> findAllActive() {
+        log.getLog("Export all avaiable Match");
         return (List<Match>) matchRepository.findAllByActive();
     }
 }

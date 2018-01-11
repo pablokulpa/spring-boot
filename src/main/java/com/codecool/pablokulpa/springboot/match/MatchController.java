@@ -15,12 +15,13 @@ public class MatchController {
 
     @Autowired
     public MatchController(MatchService matchService) {
+
         this.matchService = matchService;
     }
 
     @GetMapping(path = "")
     public Iterable<Match> index(){
-        return matchService.findAll();
+        return matchService.findAllActive();
     }
 
     @GetMapping(path = "/{id}")
