@@ -4,6 +4,7 @@ import com.codecool.pablokulpa.springboot.log.Log;
 import com.codecool.pablokulpa.springboot.player.Player;
 import com.codecool.pablokulpa.springboot.player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,14 +54,23 @@ public class MatchServiceImp implements MatchService{
 
     @Override
     public void softDelete(Integer id) {
-        log.getLog(String.format("Get player index:%s",id));
-        matchRepository.archive(id);
+        if(matchRepository.findOne(id)==null) {
+            throw new EmptyResultDataAccessException(1);
+        } else {
+            log.getLog(String.format("Get player index:%s",id));
+            matchRepository.archive(id);
+        }
+
     }
 
     @Override
     public Match showById(Integer id) {
-        log.getLog(String.format("Get player index:%s",id));
-        return matchRepository.findOne(id);
+        if(matchRepository.findOne(id)==null){
+            throw new EmptyResultDataAccessException(1);
+        }else {
+            log.getLog(String.format("Get player index:%s",id));
+            return matchRepository.findOne(id);
+        }
     }
 
     @Override

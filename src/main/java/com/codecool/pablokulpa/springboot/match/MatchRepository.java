@@ -20,7 +20,6 @@ public interface MatchRepository extends CrudRepository<Match, Integer>{
     @Query("SELECT p from Match p where p.archive like false")
     Iterable<Match> findAllByActive();
 
-
-    Iterable<Match> findAllByArchiveIsFalse();
+    Match findAllByArchiveIsFalse();
 
 }

@@ -10,13 +10,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 @RestController
-public class UniqueName extends ResponseEntityExceptionHandler {
+public class GlobalError extends ResponseEntityExceptionHandler {
 
     private Log log;
 
-    public UniqueName(Log log) {
+    public GlobalError(Log log) {
         this.log = log;
-        log.setLogger(UniqueName.class);
+        log.setLogger(GlobalError.class);
     }
 
     @PostMapping(path = "")
